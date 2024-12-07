@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.2.0">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -140,7 +140,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">21</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -344,7 +344,7 @@ V(x)=\frac{1}{2}m\omega^2x^2
 <p>这是动能的对角矩阵，构建方法就像是直接对n维向量作用一个函数。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#base vector v(x,n)</span></span><br><span class="line">nx=np.outer(xs,ns)</span><br><span class="line">bases = np.sin((np.pi/L) * nx)</span><br></pre></td></tr></table></figure>
 <p>基向量的构建方式是我很难想到的。事实上写成一个矩阵是我在写这篇文章时才梳理清楚的，虽然说本来就该这样……但线性代数的知识属实是忘了一些。在这里直接由x和n”张成“了一个矩阵，然后用我们的基组的表达式进行赋值，同样是避免了循环的出现。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#potential funcion</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fp</span>(<span class="params">x</span>):</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*x**<span class="number">2</span></span><br><span class="line"><span class="comment">#build V matrix</span></span><br><span class="line">xs=np.linspace(<span class="number">0</span>,L,S)</span><br><span class="line">dx=xs[<span class="number">1</span>]-xs[<span class="number">0</span>]</span><br><span class="line">diag_fp = np.diag(fp(xs-L/<span class="number">2</span>))</span><br><span class="line">Vmat = np.dot(bases.T,np.dot(diag_fp,bases)) * <span class="number">2</span>/L *dx</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#potential funcion</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">fp</span>(<span class="params">x</span>):</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span>*x**<span class="number">2</span></span><br><span class="line"><span class="comment">#build V matrix</span></span><br><span class="line">xs=np.linspace(<span class="number">0</span>,L,S)</span><br><span class="line">dx=xs[<span class="number">1</span>]-xs[<span class="number">0</span>]</span><br><span class="line">diag_fp = np.diag(fp(xs-L/<span class="number">2</span>))</span><br><span class="line">Vmat = np.dot(bases.T,np.dot(diag_fp,bases)) * <span class="number">2</span>/L *dx</span><br></pre></td></tr></table></figure>
 <p>定义一个势能。注意到为了计算的方便，令x的取值为0到L，这样势能函数也应当作相应的平移。我忘了这样的事因而卡了一段时间。</p>
 <p>而当我们的基组写成了矩阵，求势能矩阵元就不用像定义种那般，用一个个基分别算积分。在这里就是三个矩阵相乘的形式（x已经离散化过了捏）。</p>
 <p>那么事情基本上就做完了，然后就是对角化：</p>
