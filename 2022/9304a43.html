@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Noto+Sans+SC:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ayahccw.xyz","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeIn","post_body":"fadeInDown","coll_header":"fadeIn","sidebar":"fadeIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="本文是笔者在《化学中的数学》课的期末课题研究内容。对于没有学过物理化学的我来说，一开始觉得不易理解，但当为了这课题去查阅资料，立刻就发现了[小练习：转动热容].接下来看了统计物理的书，又发现解决问题需要的公式全都写在书上了，只需照着公式写程序就好。但讲报告的ddl在即，没有换题目的时间了，便只能在这上面想办法做得丰富些。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="双原子分子的热容曲线&#x2F;小课题">
+<meta property="og:url" content="https://ayahccw.xyz/2022/9304a43.html">
+<meta property="og:site_name" content="非键轨道">
+<meta property="og:description" content="本文是笔者在《化学中的数学》课的期末课题研究内容。对于没有学过物理化学的我来说，一开始觉得不易理解，但当为了这课题去查阅资料，立刻就发现了[小练习：转动热容].接下来看了统计物理的书，又发现解决问题需要的公式全都写在书上了，只需照着公式写程序就好。但讲报告的ddl在即，没有换题目的时间了，便只能在这上面想办法做得丰富些。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-ca6c2177312498c7e3a506097b295d8c_720w.png">
+<meta property="og:image" content="https://pic2.zhimg.com/80/v2-db92d54c9a8bea766786fb6583b26f41_720w.png">
+<meta property="og:image" content="https://pic4.zhimg.com/80/v2-835bd458e15b4d6d47aecfbc9365704f_720w.png">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-a720cbeec6f05036c69fd8562d7fe40c_720w.png">
+<meta property="article:published_time" content="2022-01-12T17:45:38.000Z">
+<meta property="article:modified_time" content="2022-07-19T13:22:28.000Z">
+<meta property="article:author" content="HC Aya.">
+<meta property="article:tag" content="物理化学">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-ca6c2177312498c7e3a506097b295d8c_720w.png">
+
+
+<link rel="canonical" href="https://ayahccw.xyz/2022/9304a43.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ayahccw.xyz/2022/9304a43.html","path":"2022/9304a43.html","title":"双原子分子的热容曲线/小课题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>双原子分子的热容曲线/小课题 | 非键轨道</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">非键轨道</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Electrons Flowing Inside</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-bangumis"><a href="/bangumis/" rel="section"><i class="fa fa-tv fa-fw"></i>二次元</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-text">1 前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%90%86%E8%AE%BA%E6%A8%A1%E5%9E%8B"><span class="nav-text">2 理论模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%90%86%E6%83%B3%E7%8E%BB%E5%B0%94%E5%85%B9%E6%9B%BC%E6%B0%94%E4%BD%93"><span class="nav-text">2.1 理想玻尔兹曼气体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%B3%E5%8A%A8%E7%83%AD%E5%AE%B9"><span class="nav-text">2.2 平动热容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AC%E5%8A%A8%E7%83%AD%E5%AE%B9"><span class="nav-text">2.3 转动热容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%AF%E5%8A%A8%E7%83%AD%E5%AE%B9"><span class="nav-text">2.4 振动热容</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E9%83%A8%E5%88%86"><span class="nav-text">3 计算部分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#h_2%E8%BD%AC%E5%8A%A8%E9%85%8D%E5%88%86%E5%87%BD%E6%95%B0%E7%83%AD%E5%AE%B9%E7%9A%84%E5%A4%84%E7%90%86"><span class="nav-text">3.1 H\(_2\)转动配分函数、热容的处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%84%E7%A7%8D%E5%88%86%E5%AD%90%E7%9A%84%E7%83%AD%E5%AE%B9%E6%9B%B2%E7%BA%BF"><span class="nav-text">3.2 各种分子的热容曲线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n_2%E7%9A%84morse%E6%8C%AF%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="nav-text">3.3 N\(_2\)的Morse振子模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E4%BA%8E%E6%B6%A8%E8%90%BD%E7%9A%84%E7%83%AD%E5%AE%B9%E6%9B%B2%E7%BA%BF"><span class="nav-text">3.4 基于涨落的热容曲线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-text">4 总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-text">参考文献</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HC Aya."
+      src="/images/takina.jpeg">
+  <p class="site-author-name" itemprop="name">HC Aya.</p>
+  <div class="site-description" itemprop="description">Electrons Flowing Inside.
+</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HC-114cs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HC-114cs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ayana7mi1240@qq.com" title="E-mail → mailto:ayana7mi1240@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/he-xiao-ye-39" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;he-xiao-ye-39" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/12378091" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;12378091" rel="noopener me" target="_blank"><i class="fa-brands fa-bilibili fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://tkhcyalumedance.wordpress.com/" title="https:&#x2F;&#x2F;tkhcyalumedance.wordpress.com&#x2F;" rel="noopener" target="_blank">TkH</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.fengyu-poi.cn/" title="https:&#x2F;&#x2F;www.fengyu-poi.cn&#x2F;" rel="noopener" target="_blank">Sdk</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://jfwilliamson.me/" title="https:&#x2F;&#x2F;jfwilliamson.me&#x2F;" rel="noopener" target="_blank">Yui</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://jiahuinie.com/" title="https:&#x2F;&#x2F;jiahuinie.com&#x2F;" rel="noopener" target="_blank">Nie</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ayahccw.xyz/2022/9304a43.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/takina.jpeg">
+      <meta itemprop="name" content="HC Aya.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="非键轨道">
+      <meta itemprop="description" content="Electrons Flowing Inside.
+">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="双原子分子的热容曲线&#x2F;小课题 | 非键轨道">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          双原子分子的热容曲线/小课题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-01-13 01:45:38" itemprop="dateCreated datePublished" datetime="2022-01-13T01:45:38+08:00">2022-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">报告</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/9304a43.html" class="post-meta-item twikoo_visitors" data-flag-title="双原子分子的热容曲线/小课题" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="twikoo_visitors"></span>
+    </span>
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>3.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="前言">1 前言</h2>
+<p>本文是笔者在《化学中的数学》课的期末课题研究内容。对于没有学过物理化学的我来说，一开始觉得不易理解，但当为了这课题去查阅资料，立刻就发现了<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27908373">小练习：转动热容 - 知乎
+(zhihu.com)</a>.接下来看了统计物理的书，又发现解决问题需要的公式全都写在书上了，只需照着公式写程序就好。但讲报告的ddl在即，没有换题目的时间了，便只能在这上面想办法做得丰富些。</p>
+<p>关于这个的想法最早是学普物热学的时候，看到氢气的热容曲线，就在想自由度依次激发这件事由理论应当如何描述。期末课题的内容（第二题）是对任意分子体系建立模型，得到一些热力学、动力学量，我想起了它。同学们有的在尝试PIMD，有的在给分子建立神奇力场模型，还有学长在做分子动力学模拟的程序，我看着自己的热容曲线，觉得做了件挺无聊的事。</p>
+<p>不过还是记下来了。刚好有写好的报告，改一改就能发出来了。</p>
+<h2 id="理论模型">2 理论模型</h2>
+<h3 id="理想玻尔兹曼气体">2.1 理想玻尔兹曼气体</h3>
+<p>说起来我半天没想明白“激发”是怎么一回事，或者说热容上升的那段背后的数学是什么样的。后来想了想，有没有可能把配分函数之类的写出来，它的数学形式就自然蕴含了“逐渐激发”的行为。查了书以后好像的确是这么一回事，这些量子行为看起来就是级数和的性质所决定，而与积分的结果相区别。</p>
+<p>我们从气体的正常沸点开始考虑。由于满足非简并条件，可忽略费米子/玻色子的差异，气体遵从玻尔兹曼统计。分子的能量可分为独立的平动、转动、振动和电子能项，如此得配分函数为：
+<span class="math display">\[
+Z = Z_{\text{trans}}Z_{\text{rot}}Z_{\text{vib}}Z_e
+\]</span> 而自由能、能量均值与配分函数的关系是 <span
+class="math display">\[
+F = \ln Z  \quad \braket{H} = -\frac{\partial \ln Z}{\partial \beta}
+\]</span></p>
+<p>故等容热容，依据定义为 <span class="math display">\[
+c_V = \frac{\partial}{\partial T}\langle{H}\rangle  =
+c_{\text{trans}}+c_{\text{rot}}+c_{\text{vib}}
+\]</span></p>
+<p>考虑的温度范围应离气体的解离温度较远，这时可认为电子都处于基态，<span
+class="math inline">\(Z_e=1\)</span>，从而对热容无贡献。
+(1)式说明可分别处理各部分热容。</p>
+<h3 id="平动热容">2.2 平动热容</h3>
+<p>跟据一维无穷深势阱的结果，平动配分函数为 <span
+class="math display">\[
+Z_t = \frac{V}{h^3}\left( \frac{2\pi m}{\beta}\right)^{\frac{3}{2}}
+\tag{2}
+\]</span> 这一结论的得出假设了能级差很小，从而可以把求和变为积分处理。
+<span class="math display">\[
+\Delta\varepsilon \sim \frac{2\pi^2 \hbar^2}{m L}
+\]</span> 能级差远远小于<span
+class="math inline">\(k_BT\)</span>的量级，这在我们的研究范围内是总能满足的。</p>
+<p>所以认为(2)总是成立的，从而有 <span class="math display">\[
+c_{\text{trans}} = \frac{3}{2}Nk_BT
+\]</span></p>
+<h3 id="转动热容">2.3 转动热容</h3>
+<p>转动能级来自于角动量本征问题的求解，其结果为： <span
+class="math display">\[
+\varepsilon_n = \frac{\hbar^2}{2I}K(K+1) \qquad K=0,1,2\dots
+\]</span></p>
+<p>而有<span
+class="math inline">\(2K+1\)</span>的简并度。得到配分函数为： <span
+class="math display">\[
+Z_r = \sum_{K=0}^\infty(2K+1)\exp(-K(K+1)\frac{\hbar^2\beta}{2I})\tag{3}
+\]</span></p>
+<p>其中，<span class="math inline">\(\theta_r =
+{\hbar^2}\big/{2Ik_B}\)</span>
+称为转动特征温度，可在书中查到。此式需要数值计算，
+由于这一级数的收敛性依赖于<span
+class="math inline">\(e\)</span>指数，故不能逐项简化。因此不考虑 <span
+class="math inline">\(c_{\text{rot}}\)</span> 的解析形式。</p>
+<p>(3)式对于异核双原子分子是适用的，对于同核分子如H<span
+class="math inline">\(_2\)</span>、D<span
+class="math inline">\(_2\)</span>，核是玻色子或费米子，
+对分子波函数的对称性有要求。</p>
+<p>氢核是费米子，要求分子的<span
+class="math inline">\(\Psi\)</span>反对称，由于<span
+class="math inline">\(\Psi =
+\Psi_{\text{spin}}\Psi_{\text{rot}}\)</span>，核自旋态对转动本征态有限制：自旋平行，<span
+class="math inline">\(K\)</span>只能取偶数；自旋相反，<span
+class="math inline">\(K\)</span>只能取奇数。即区分为
+正氢、仲氢，其比例是3/1。</p>
+<p>以下是修正后的氢分子配分函数。 <span class="math display">\[
+\begin{cases}
+Z_{r} = \frac{3}{4}Z_{r}^{\text{odd}}+\frac{1}{4}Z_{r}^{\text{even}} \\
+    Z_{r}^{\text{odd}} = \sum_{K = 1,3,5\dots}z(K) \\
+    Z_{r}^{\text{even}} = \sum_{K = 0,2,4\dots}z(K)
+    \end{cases}
+    \tag{4}
+\]</span></p>
+<h3 id="振动热容">2.4 振动热容</h3>
+<p>常见的结果来自谐振子模型，由 <span class="math display">\[
+Z_{v} = \frac{1}{2\sinh(\beta\hbar\omega/2)}
+\]</span></p>
+<p>得到热容的解析表达式： <span class="math display">\[
+c_{\text{vib}} =
+(\beta\hbar\omega)^2\frac{e^{\beta\hbar\omega}}{(e^{\beta\hbar\omega} -
+1)^2}Nk_B
+\]</span></p>
+<h2 id="计算部分">3 计算部分</h2>
+<h3 id="h_2转动配分函数热容的处理">3.1 H<span
+class="math inline">\(_2\)</span>转动配分函数、热容的处理</h3>
+<p>在计算中为了方便，取<span class="math inline">\(k_B =
+1\)</span>，或者结果以<span
+class="math inline">\(Nk_B\)</span>的倍数表示。</p>
+<p><img src="https://pic1.zhimg.com/80/v2-ca6c2177312498c7e3a506097b295d8c_720w.png" alt="H$_2$的转动热容" style="zoom:80%;" /></p>
+<p>(3)级数的收敛性很好，<span
+class="math inline">\(K\)</span>取100就保证收敛。</p>
+<p>使用差分方法，求出转动能量均值，再求出热容。这里取差分的间隔为
+0.00001, 过小的间隔会带来不稳定的结果。</p>
+<p>按图例所示顺序，第一条(Hetero)为异核双原子分子的转动热容，可见经过一个极大值后迅速趋于经典极限结果。(Ortho-)和(Para-)分别表示了正氢、仲氢的计算结果，它们的性质有较大的差异。利用修正的配分函数(4)计算出的曲线如点线(Z+Z)所示，和实验得到的结果完全不同。而(c+c)曲线是用正氢、仲氢热容按照其所占比例加权平均的结果，与实验符合。</p>
+<p>这是因为，实际的核自旋很难在碰撞中发生改变，其行为相当于是独立的。所以氢气体系是正氢、仲氢的非平衡混合态，自由能是直接相加的关系。</p>
+<h3 id="各种分子的热容曲线">3.2 各种分子的热容曲线</h3>
+<p>在谐振子近似下，代入分子的转动、振动特征温度信息(D<span
+class="math inline">\(_2\)</span>加上正、仲之比），整体的热容曲线容易得出，如下图（20--50000K)：</p>
+<p><img src="https://pic2.zhimg.com/80/v2-db92d54c9a8bea766786fb6583b26f41_720w.png" alt="等体热容曲线" style="zoom:80%;" /></p>
+<p>可以看到从20
+K开始，除了H和D，其他分子的转动热容是一直激发的，在研究范围内都趋于<span
+class="math inline">\(1Nk_B\)</span>的经典结果，这是一个有效的近似。也因此人们一般只对H和D有正、仲之分。</p>
+<p>在计算过程中发现热容曲线在右端有的上升、有的下降，偏离了经典极限的结果。经排查是转动热容的结果在高温时发生了变化，这应该是差分计算时的问题，和高温极限的结果不同。所以手动调节为1，修正后得到符合实验结果的<strong>图2</strong>。</p>
+<p>同样的方法对更多分子有效，只需知道特征温度。在转动动热容都已激发的条件下，此模型下不同分子的曲线相当于平移。</p>
+<p>在200--300
+K范围，振动热容基本都未激发，但随温度升高逐步开始激发。在<span
+class="math inline">\(10^2\sim
+10^4\)</span>的研究范围内，振动热容是不符合"高温极限"的，因此需要特殊考虑。</p>
+<h3 id="n_2的morse振子模型">3.3 N<span
+class="math inline">\(_2\)</span>的Morse振子模型</h3>
+<p>引入Morse势更精确描述分子的振动。这里以N<span
+class="math inline">\(_2\)</span>为例 <span class="math display">\[
+V(r) = D_e\left(1-e^{-a(r-r_e)}\right)^2
+\]</span></p>
+<p>其中，$ D_e $查到为79845 $ ^{-1} $ ，换算为 0.36380 hatree 或 114879
+K（即解离温度）。</p>
+<p>$ = a <span class="math inline">\(，延用之前的\)</span> <span
+class="math inline">\(得到\)</span> a $。与谐振子势的对比如下图</p>
+<p><img src="https://pic4.zhimg.com/80/v2-835bd458e15b4d6d47aecfbc9365704f_720w.png" alt="Morse / H.O. Potential" style="zoom:80%;" /></p>
+<p>Morse振子的本征能级为 <span class="math display">\[
+E_n = \hbar\omega\left(n+\frac{1}{2}\right) -
+\frac{\left[\hbar\omega\left(n+\frac{1}{2}\right)\right]^2}{4D_e}
+\]</span>
+据此计算配分函数，然后数值计算得到振动热容。与谐振子势的结果对比如下：</p>
+<p><img src="https://pic1.zhimg.com/80/v2-a720cbeec6f05036c69fd8562d7fe40c_720w.png" alt="振动热容对比" style="zoom:80%;" /></p>
+<p>可见Morse势的结果在高温下并不趋于常数，而是上升至一个极大值，在接近解离温度时热容逐渐下降。由于时间紧张，并未对结果进行验证。而其上升和下降的行为应当是比较符合实际的。在较低温度的部分两条曲线基本重合，这是简谐近似有效的部分。到<span
+class="math inline">\(10^4\)</span>附近两条曲线的差异就很明显，所以考虑非谐振效应是很有必要的。</p>
+<h3 id="基于涨落的热容曲线">3.4 基于涨落的热容曲线</h3>
+<p>本来还想尝试助教提供的采样方法，利用 <span class="math display">\[
+\int \mathrm{d}\Gamma \, e^{-\beta H/Q} H^2
+        = \left(e^{-\beta_0 H/Q}\right)\int \mathrm{d}{\Gamma}\,
+e^{-(\beta-\beta_0)H/Q}H^2
+\]</span></p>
+<p>从哈密顿量的涨落出发计算热容。与上述用了很多结论的方法应能得出一样的效果。但由于时间有限，无法进行这一部分了。</p>
+<h2 id="总结">4 总结</h2>
+<p>主要是得到了一些"经典极限"之外的结果，并以此检验了各种近似的正确性，结果是通用的。转动热容部分，对于较复杂的H<span
+class="math inline">\(_2\)</span>、D<span
+class="math inline">\(_2\)</span>做了特殊处理和分析。振动热容部分考虑了谐振子和Morse振子两种模型的差异。</p>
+<p>由于之前并未学过物理化学，补理论知识花费了不少时间。在研究的过程中感觉对一些热力学和统计物理的知识，以及对几种模型了解更深了些。也算是一定程度上达成了目的。</p>
+<h3 id="参考文献">参考文献</h3>
+<p>[1] 热力学与统计物理学, 林宗涵</p>
+<p>[2] <em>Statistical Physics (5th Edition)</em>, L. D. Landau</p>
+<p>[3] https://en.wikipedia.org/wiki/Morse_potential</p>
+<p>[4] 物理化学讲义, 彭笑刚</p>
+<p>[5] Le Roy, Huang, and Jary, <em>J. Chem. Phys.</em>,
+<strong>125</strong>, 164310 (2006)</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>HC Aya.
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://ayahccw.xyz/2022/9304a43.html" title="双原子分子的热容曲线&#x2F;小课题">https://ayahccw.xyz/2022/9304a43.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E7%89%A9%E7%90%86%E5%8C%96%E5%AD%A6/" rel="tag"># 物理化学</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/86e3994a.html" rel="prev" title="我将无法创作">
+                  <i class="fa fa-angle-left"></i> 我将无法创作
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/cbbfbdd.html" rel="next" title="生活在夏日之前">
+                  生活在夏日之前 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">HC Aya.</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">81k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:14</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":true,"envId":"https://ayahc-twikoo.hf.space","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Noto+Sans+SC:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ayahccw.xyz","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeIn","post_body":"fadeInDown","coll_header":"fadeIn","sidebar":"fadeIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="Introduction to Computer Systems. ~ from 2022.9 to 2023.1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ICS Lab 最终总结">
+<meta property="og:url" content="https://ayahccw.xyz/2023/551078a4.html">
+<meta property="og:site_name" content="非键轨道">
+<meta property="og:description" content="Introduction to Computer Systems. ~ from 2022.9 to 2023.1">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-01-06T14:55:20.000Z">
+<meta property="article:modified_time" content="2023-06-27T17:01:00.000Z">
+<meta property="article:author" content="HC Aya.">
+<meta property="article:tag" content="Computer System">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ayahccw.xyz/2023/551078a4.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ayahccw.xyz/2023/551078a4.html","path":"2023/551078a4.html","title":"ICS Lab 最终总结"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>ICS Lab 最终总结 | 非键轨道</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">非键轨道</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Electrons Flowing Inside</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-bangumis"><a href="/bangumis/" rel="section"><i class="fa fa-tv fa-fw"></i>二次元</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#data-lab"><span class="nav-text">1. Data Lab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#bomb-lab"><span class="nav-text">2. Bomb Lab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#attack-lab"><span class="nav-text">3. Attack Lab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#arch-lab"><span class="nav-text">4. Arch Lab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cache-lab"><span class="nav-text">5. Cache Lab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell-lab"><span class="nav-text">6. Shell Lab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#malloc-lab"><span class="nav-text">7. Malloc Lab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#proxy-lab"><span class="nav-text">8. Proxy Lab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8E%E8%AE%B0"><span class="nav-text">后记</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HC Aya."
+      src="/images/takina.jpeg">
+  <p class="site-author-name" itemprop="name">HC Aya.</p>
+  <div class="site-description" itemprop="description">Electrons Flowing Inside.
+</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HC-114cs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HC-114cs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ayana7mi1240@qq.com" title="E-mail → mailto:ayana7mi1240@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/he-xiao-ye-39" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;he-xiao-ye-39" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/12378091" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;12378091" rel="noopener me" target="_blank"><i class="fa-brands fa-bilibili fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://tkhcyalumedance.wordpress.com/" title="https:&#x2F;&#x2F;tkhcyalumedance.wordpress.com&#x2F;" rel="noopener" target="_blank">TkH</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.fengyu-poi.cn/" title="https:&#x2F;&#x2F;www.fengyu-poi.cn&#x2F;" rel="noopener" target="_blank">Sdk</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://jfwilliamson.me/" title="https:&#x2F;&#x2F;jfwilliamson.me&#x2F;" rel="noopener" target="_blank">Yui</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://jiahuinie.com/" title="https:&#x2F;&#x2F;jiahuinie.com&#x2F;" rel="noopener" target="_blank">Nie</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ayahccw.xyz/2023/551078a4.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/takina.jpeg">
+      <meta itemprop="name" content="HC Aya.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="非键轨道">
+      <meta itemprop="description" content="Electrons Flowing Inside.
+">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="ICS Lab 最终总结 | 非键轨道">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ICS Lab 最终总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-01-06 22:55:20" itemprop="dateCreated datePublished" datetime="2023-01-06T22:55:20+08:00">2023-01-06</time>
+    </span>
+
+  
+    <span id="/2023/551078a4.html" class="post-meta-item twikoo_visitors" data-flag-title="ICS Lab 最终总结" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="twikoo_visitors"></span>
+    </span>
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>ICS 全部的 Lab
+在今日结束了，于是给这一个学期的工作写个总结。不得不说，这堆东西耗费了本学期里最多的精力。在期末季由于阳了影响复习，ICS
+以 PF 告终（于是最后一个 Lab
+也摆了）。算是个十分无奈的结局，不过考虑到选这门课的目的只是学些东西，倒足以自我安慰。</p>
+<h2 id="data-lab">1. Data Lab</h2>
+<p>Data Lab
+是一系列位运算Puzzle和整数/浮点数运算Trick。第一个Lab实属“技巧性太强”，有的不参考别人的解法几乎没法做。大概记忆是痛苦的寻思和抄答案，以及写的过程是在各个咖啡馆里，其他记不清了。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Correctness</span> Results	Perf Results</span><br><span class="line"><span class="attribute">Points</span>	Rating	Errors	Points	Ops	Puzzle</span><br><span class="line"><span class="attribute">1</span>	<span class="number">1</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">4</span>	bitAnd</span><br><span class="line"><span class="attribute">1</span>	<span class="number">1</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">4</span>	bitConditional</span><br><span class="line"><span class="attribute">2</span>	<span class="number">2</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">15</span>	byteSwap</span><br><span class="line"><span class="attribute">3</span>	<span class="number">3</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">6</span>	logicalShift</span><br><span class="line"><span class="attribute">4</span>	<span class="number">4</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">9</span>	cleanConsecutive1</span><br><span class="line"><span class="attribute">4</span>	<span class="number">4</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">24</span>	countTrailingZero</span><br><span class="line"><span class="attribute">2</span>	<span class="number">2</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">8</span>	divpwr2</span><br><span class="line"><span class="attribute">2</span>	<span class="number">2</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">9</span>	oneMoreThan</span><br><span class="line"><span class="attribute">3</span>	<span class="number">3</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">14</span>	satMul3</span><br><span class="line"><span class="attribute">3</span>	<span class="number">3</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">8</span>	subOK</span><br><span class="line"><span class="attribute">3</span>	<span class="number">3</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">15</span>	isLessOrEqual</span><br><span class="line"><span class="attribute">4</span>	<span class="number">4</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">11</span>	trueThreeFourths</span><br><span class="line"><span class="attribute">4</span>	<span class="number">4</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">13</span>	float_twice</span><br><span class="line"><span class="attribute">4</span>	<span class="number">4</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">20</span>	float_i2f</span><br><span class="line"><span class="attribute">4</span>	<span class="number">4</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">18</span>	float_f2i</span><br><span class="line"><span class="attribute">4</span>	<span class="number">4</span>	<span class="number">0</span>	<span class="number">2</span>	<span class="number">11</span>	float_pwr2</span><br><span class="line"></span><br><span class="line"><span class="attribute">Score</span> = <span class="number">80</span>/<span class="number">80</span><span class="meta"> [48/48 Corr + 32/32 Perf] (189 total operators)</span></span><br></pre></td></tr></table></figure>
+<h2 id="bomb-lab">2. Bomb Lab</h2>
+<p>Bomb Lab
+是“拆二进制炸弹”。反汇编得到汇编代码，然后通过分析它在干什么，或者用 gdb
+在运行时跟踪它在干什么（也以此避免爆炸扣分），来找到每一个phase的答案：比如某处的字符串、跳转表、按某种要求的顺序排序的数等。当时还对程序运行时的内存结构一无所知，于是寻找这些信息是个神奇的过程。而通过每一个
+phase 都很令人激动！</p>
+<p>后面的 phase
+变得很复杂，读代码十分困难（实属废了大劲），但是在运行时查看栈指针附近的内存却能很快地猜出它在干的事，这让我突然意识到
+Lab 是一个“实验”。</p>
+<p>还有些奇奇怪怪的背景设定和“mua ha ha
+ha”，可惜不如去年的答案中有“关注嘉然顿顿解馋”和“顶晚人和我会一直陪着你”，今年似乎只有原。</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BOOM!!!</span></span><br><span class="line"><span class="keyword"></span>The <span class="keyword">bomb </span>has <span class="keyword">blown </span>up.</span><br><span class="line">Your <span class="keyword">instructor </span>has <span class="keyword">been </span>notified.</span><br><span class="line"><span class="comment"># didn&#x27;t happen #</span></span><br></pre></td></tr></table></figure>
+<h2 id="attack-lab">3. Attack Lab</h2>
+<p>这个更是神奇，要进行缓冲区溢出攻击。分为没啥防备的 Code injection
+攻击，以及在有栈随机化、运行权限的控制下搞的 Return-oriented
+攻击。要通过溢出覆盖掉原来的返回地址，跳到我们的代码运行，Code injection
+就是可以直接把代码塞进栈里，而 Return-oriented
+是利用一些别处的代码片段（Gadget）进行“断章取义”然后借助
+<code>ret</code> 指令（C3）跳来跳去。</p>
+<p>还是在玩汇编、玩机器指令，玩得比较花。像最后一个 phase
+甚至加了栈保护者（canary），但还是要通过一个内存操作的漏洞，悄悄地改变它复制的范围，然后通过巧妙测算改变
+canary 下面的东西。</p>
+<p>写这个 Lab
+的时候大概是光棒录制集中的时期。参与食南京大牌档和拍片，然后又匆匆跑回来接着整，对此印象很深刻。</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Cookie: <span class="number">0xff114514</span></span><br><span class="line"><span class="keyword">Type</span> string:Touch3!: You <span class="keyword">called</span> touch3(&quot;0xff114514&quot;)</span><br><span class="line"><span class="keyword">Valid</span> solution <span class="keyword">for</span> <span class="keyword">level</span> <span class="number">3</span> <span class="keyword">with</span> target starget</span><br><span class="line">PASS: Sent exploit string <span class="keyword">to</span> <span class="keyword">server</span> <span class="keyword">to</span> be validated.</span><br><span class="line">NICE JOB!</span><br></pre></td></tr></table></figure>
+<h2 id="arch-lab">4. Arch Lab</h2>
+<p>这个比较怪。先是写些 y86 汇编，然后给一个 SEQ 处理器添加两条指令（写
+HCL），这些都好办。之后是给一个流水线（PIPE）处理器下的数组复制算法优化。方法大概是循环展开、消除加载-使用冲突等等，结果按性能给分。那段时间有点过于忙，处理器那一章是匆忙看完的。后来这个
+Lab
+的解法看起来很丑，而且没追求满分——满分还要去魔改处理器（是针对程序改处理器，听起来就很离谱！）</p>
+<p>搞完这个以后就告别了汇编。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Autodriver: Job exited with status 0</span><br><span class="line">tar -m -xf handin.tar</span><br><span class="line">tar -m -xf autograde.tar</span><br><span class="line"><span class="built_in">mv</span> ./*-sum.ys ./grade/parta/handin/student-sum.ys</span><br><span class="line"><span class="built_in">mv</span> ./*-rsum.ys ./grade/parta/handin/student-rsum.ys</span><br><span class="line"><span class="built_in">mv</span> ./*-bubble.ys ./grade/parta/handin/student-bubble.ys</span><br><span class="line"><span class="built_in">mv</span> ./*seq-full.hcl ./grade/partb/handin/seq-full.hcl</span><br><span class="line"><span class="built_in">mv</span> ./*-ncopy.ys ./grade/partc/handin/student-ncopy.ys</span><br><span class="line"><span class="built_in">mv</span> ./*-pipe-full.hcl ./grade/partc/handin/student-pipe-full.hcl</span><br><span class="line"><span class="built_in">cd</span> grade; ./driver.pl</span><br><span class="line">PARTA_SCORES=30 PARTB_SCORES=40 PARTC_PERFORMANCE=7.86 PARTC_SCORES=52.8</span><br></pre></td></tr></table></figure>
+<h2 id="cache-lab">5. Cache Lab</h2>
+<p>它跨越了期中季。“擦车” Lab
+是写起来比较有成就感的一个。且这是第一回需要处理命令行参数，建立一个比较完整的命令行应用——一个高速缓存模拟器。自己设计一些操作来模拟
+Cache 的行为：查找、替换（LRU策略）等等，摸清 Cache
+在做的几件事就可以开写（当然，启动还是依赖了网上的版本），不过 Bug
+还是在不易留意之处出现。写它的时候我在外面的自习室，因为一个 Bug
+搞到1点都没注意。</p>
+<p>后半部分是做一个矩阵转置算法的性能优化，这部分除了简单的循环展开、按
+Cache
+的大小分块之外，我自己很难想出别的什么，于是又参考了神奇算法。卡着边界得到满点。
+令人感叹，这是封校前最后的 Lab。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Cache</span> Lab summary:</span><br><span class="line">                        <span class="attribute">Points</span>   Max pts      Misses</span><br><span class="line"><span class="attribute">Csim</span> correctness          <span class="number">27</span>.<span class="number">0</span>        <span class="number">27</span></span><br><span class="line"><span class="attribute">Trans</span> perf <span class="number">32</span>x32           <span class="number">8</span>.<span class="number">0</span>         <span class="number">8</span>         <span class="number">284</span></span><br><span class="line"><span class="attribute">Trans</span> perf <span class="number">64</span>x64           <span class="number">8</span>.<span class="number">0</span>         <span class="number">8</span>        <span class="number">1176</span></span><br><span class="line"><span class="attribute">Trans</span> perf <span class="number">60</span>x68          <span class="number">10</span>.<span class="number">0</span>        <span class="number">10</span>        <span class="number">1599</span></span><br><span class="line">          <span class="attribute">Total</span> points    <span class="number">53</span>.<span class="number">0</span>        <span class="number">53</span></span><br></pre></td></tr></table></figure>
+<h2 id="shell-lab">6. Shell Lab</h2>
+<p>时间变得有点紧，我决定使用 Grace
+Day！这阵子也比较混乱，学异常处理这一章时我感觉我就需要一个异常处理程序，进入内核态处理完再回来。目的是写一个具有任务调度功能的
+Tiny Shell，要能处理 SIGINT(ctrl+c)
+一类的信号，很难上手，好在框架比较完整。需要实现的只有具体的运行以及几个信号处理。虽然
+writeup 上说应当别急着使用测试程序，但跟据舍友给出的经验，测试用的 trace
+是循序渐进的，实现某个功能就能通过某些 trace，于是就按这个顺序来。</p>
+<p>感谢某人的 reference。在经历了比以前痛苦但不如之后痛苦的 debug
+后，分数的提升很迅速，最后在autolab上是满点（虽然在我这里有时是124/128，因为
+race 存在，可能之后会查出来扣掉）。</p>
+<figure class="highlight lasso"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="params">...</span><span class="params">...</span></span><br><span class="line">Running <span class="number">4</span> iters of trace31.txt</span><br><span class="line"><span class="number">1.</span> Running trace31.txt<span class="params">...</span></span><br><span class="line"><span class="number">2.</span> Running trace31.txt<span class="params">...</span></span><br><span class="line"><span class="number">3.</span> Running trace31.txt<span class="params">...</span></span><br><span class="line"><span class="number">4.</span> Running trace31.txt<span class="params">...</span></span><br><span class="line">Score: <span class="number">128</span>/<span class="number">128</span></span><br></pre></td></tr></table></figure>
+<h2 id="malloc-lab">7. Malloc Lab</h2>
+<p>最大最恶的
+Lab！写一个动态内存分配器，重点是堆上内存空间的管理，基本全看性能给分：包括空间利用率和吞吐量（即处理速度）。书上给出了隐式空闲链表的完整实现，简单提及显式链表和分离链表。但想要得分必须实现显式链表，满分则需要改成分离链表。这是一个逐步改进过程，而最大的问题在于
+bug
+无处不在。也因此，要求我们先写一个检查堆各项指标良好的函数（但这个也可能包含bug）。</p>
+<p>我的第一阶段就是和 bug 最斗争，先是极其恶劣的
+<code>Segmentation Fault</code>，来自毫无容错的指针运算（比较草的是，我的sigsegv几乎全出在了<code>checkheap</code>函数里）；然后是链表的行为完全不符合设想，又是一通狂改，狂暴
+printf 输出。当我终于调好了显式链表，拿到了80+，这天我离开了学校。</p>
+<p>又实现了几个优化，舍友在这些优化的情况下达到了88。然而我提交以后竟只有71，是吞吐量比本机低上许多。当时我正在病发编程，我一句一句地寻找性能瓶颈，不论怎么调都对这个B性能没有改进。我麻了，在跟它较劲的第二天，它的
+ddl 和后面的 Proxy Lab一起改为了1.6。于是放弃搞它。</p>
+<p>在期末考试过后，再次拾起，又经历了一阵子相同的无用优化。那时我已经认定了和舍友的版本相比，我在一个
+trace
+上表现极差。我分析它，却整不出个所以然来。直到决定投向玄学调参，我通过把<code>chunksize</code>
+改成1.5甚至2倍，竟一路把分数从71调到83；接下来修改寻找空闲块的<code>find_fit</code>策略，由
+first-fit 改成 前几个-fit，提高至87；再修改时写错了一个地方，结果竟达到
+95。试图修改，可是改不得——实际上我以为写错了而毫无作用的，其实是对不同长度的链表做了不同的事。</p>
+<p>于是收工。离ddl不远了。</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">Using default tracefiles in ./traces/</span><br><span class="line">Measuring performance with a cycle counter.</span><br><span class="line">Processor clock rate ~= 2000.0 MHz</span><br><span class="line">......................</span><br><span class="line">Results for mm malloc:</span><br><span class="line">  valid  util   ops    secs     Kops  trace</span><br><span class="line">   yes    77% <span class="number"> 100000 </span> 0.006566<span class="number"> 15231 </span>./traces/alaska.rep</span><br><span class="line"> * yes    99%   <span class="number"> 4805 </span> 0.000481 <span class="number"> 9991 </span>./traces/amptjp.rep</span><br><span class="line"> * yes    81%   <span class="number"> 4162 </span> 0.000204<span class="number"> 20406 </span>./traces/bash.rep</span><br><span class="line"> * yes    77%  <span class="number"> 57716 </span> 0.001955<span class="number"> 29529 </span>./traces/boat.rep</span><br><span class="line"> * yes    73%   <span class="number"> 6000 </span> 0.000957 <span class="number"> 6267 </span>./traces/binary2-bal.rep</span><br><span class="line"> * yes    99%   <span class="number"> 5032 </span> 0.000436<span class="number"> 11536 </span>./traces/cccp.rep</span><br><span class="line"> * yes    99%   <span class="number"> 5848 </span> 0.000475<span class="number"> 12320 </span>./traces/cccp-bal.rep</span><br><span class="line"> * yes    76%  <span class="number"> 11991 </span> 0.000532<span class="number"> 22535 </span>./traces/chrome.rep</span><br><span class="line"> * yes    98%  <span class="number"> 20000 </span> 0.000618<span class="number"> 32358 </span>./traces/coalesce-big.rep</span><br><span class="line">   yes    50%  <span class="number"> 14400 </span> 0.000372<span class="number"> 38722 </span>./traces/coalescing-bal.rep</span><br><span class="line">   yes   100%     <span class="number"> 15 </span> 0.000003 <span class="number"> 4912 </span>./traces/corners.rep</span><br><span class="line"> * yes    99%   <span class="number"> 5683 </span> 0.000649 <span class="number"> 8758 </span>./traces/cp-decl.rep</span><br><span class="line"> u yes    71%      --        --    -- ./traces/exhaust.rep</span><br><span class="line"> * yes   100%   <span class="number"> 5380 </span> 0.000668 <span class="number"> 8049 </span>./traces/expr-bal.rep</span><br><span class="line">   yes   100%     <span class="number"> 15 </span> 0.000003 <span class="number"> 4912 </span>./traces/corners.rep</span><br><span class="line"> * yes    85%  <span class="number"> 99544 </span> 0.003558<span class="number"> 27981 </span>./traces/firefox-reddit2.rep</span><br><span class="line"> * yes    95%  <span class="number"> 55092 </span> 0.002596<span class="number"> 21224 </span>./traces/freeciv.rep</span><br><span class="line">   yes    81%   <span class="number"> 1494 </span> 0.000067<span class="number"> 22268 </span>./traces/perl.rep</span><br><span class="line">   yes    17%     <span class="number"> 10 </span> 0.000003 <span class="number"> 3899 </span>./traces/malloc.rep</span><br><span class="line">   yes    14%     <span class="number"> 17 </span> 0.000003 <span class="number"> 6189 </span>./traces/malloc-free.rep</span><br><span class="line"> * yes    99%   <span class="number"> 5683 </span> 0.000874 <span class="number"> 6504 </span>./traces/cp-decl.rep</span><br><span class="line">   yes    31%  <span class="number"> 14401 </span> 0.117897  <span class="number"> 122 </span>./traces/realloc.rep</span><br><span class="line">14<span class="number"> 13 </span>    89% <span class="number"> 286936 </span> 0.014002 20492</span><br><span class="line"></span><br><span class="line">Perf index =<span class="number"> 56 </span>(util) &amp;<span class="number"> 39 </span>(thru) = 95/100</span><br></pre></td></tr></table></figure>
+<h2 id="proxy-lab">8. Proxy Lab</h2>
+<p>PF之后摆了（Malloc
+主要是不甘心）。我本来打算留2天给这个Lab，但5号也摸了，于是只留了一天。这个
+Lab 要实现一个代理服务器，再加入多线程和 Cache，还有些针对 Real Page
+的鲁棒性等（不太相干的内容）。我实现了基本功能，加上几句就有了线程化。之后因为没时间写
+Cache 了，Lab就此结束，拿了63/90
+。由于代码与书上给出的都比较近似，还算好写，但听说针对 Real Page
+的边际成本很大。</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">Basic</span>: <span class="number">40</span> / <span class="number">40</span></span><br><span class="line"><span class="attribute">Concurrency</span>: <span class="number">15</span> / <span class="number">15</span></span><br><span class="line"><span class="attribute">Cache</span>: <span class="number">0</span> / <span class="number">15</span></span><br><span class="line"><span class="attribute">Real</span> Pages: <span class="number">8</span> / <span class="number">20</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">totalScore</span> = <span class="number">63</span> / <span class="number">90</span></span><br></pre></td></tr></table></figure>
+<h2 id="后记">后记</h2>
+<p>在大概 shell lab 进行时，class machine 经历了一次更新，更新到 ubuntu
+22。而我在用的 wsl 还是 ubuntu 20。在 <code>make</code> 时，发现
+<code>GLIBC</code>
+的版本不匹配，于是尝试更新。当我正完成安装时，才在网上看到
+<code>GLIBC</code> 不可轻易升级的文章——因为它可能导致 Linux
+的内核紊乱。<code>GLIBC</code>
+是最底层的C语言库，而内核基于C，所有功能都与它有关。当安装到最后报出两条错误，我意识到惨案发生。在那之后，我无论输入什么指令，得到的响应就只有那两条错误了。于是这个
+linux machine 被我玩坏了。不过对它没多少留恋，继而重装了 ubuntu 22。</p>
+<p>一些不得不尝的经历啊。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>HC Aya.
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://ayahccw.xyz/2023/551078a4.html" title="ICS Lab 最终总结">https://ayahccw.xyz/2023/551078a4.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Computer-System/" rel="tag"># Computer System</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/7bc8bb22.html" rel="prev" title="苦痛和疾病的社会根源：现代中国的抑郁、神经衰弱和病痛">
+                  <i class="fa fa-angle-left"></i> 苦痛和疾病的社会根源：现代中国的抑郁、神经衰弱和病痛
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/81d60481.html" rel="next" title="群星目力的夜晚">
+                  群星目力的夜晚 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">HC Aya.</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">81k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:14</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":true,"envId":"https://ayahc-twikoo.hf.space","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>

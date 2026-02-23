@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Noto+Sans+SC:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.0.0/css/all.min.css" integrity="sha256-VHqXKFhhMxcpubYf9xiWdCiojEbY9NexQ4jh8AxbvcM=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ayahccw.xyz","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.27.0","exturl":false,"sidebar":{"position":"right","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"codeblock":{"theme":{"light":"github","dark":"github-dark"},"prism":{"light":"prism","dark":"prism-dark"},"copy_button":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"language":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":true,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeIn","post_body":"fadeInDown","coll_header":"fadeIn","sidebar":"fadeIn"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}}</script><script src="/js/config.js" defer></script>
+
+    <meta name="description" content="本文是笔者《软物质与硬科学》课程的小报告（2022.6）。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工智能预测蛋白质进展">
+<meta property="og:url" content="https://ayahccw.xyz/2022/a9bd3a74.html">
+<meta property="og:site_name" content="非键轨道">
+<meta property="og:description" content="本文是笔者《软物质与硬科学》课程的小报告（2022.6）。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-06-22T05:48:14.000Z">
+<meta property="article:modified_time" content="2023-06-27T17:03:14.000Z">
+<meta property="article:author" content="HC Aya.">
+<meta property="article:tag" content="计算">
+<meta property="article:tag" content="生信">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://ayahccw.xyz/2022/a9bd3a74.html">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://ayahccw.xyz/2022/a9bd3a74.html","path":"2022/a9bd3a74.html","title":"人工智能预测蛋白质进展"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>人工智能预测蛋白质进展 | 非键轨道</title>
+  
+
+
+
+
+
+
+
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@next-theme/pjax@0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous" defer></script>
+<script src="/js/utils.js" defer></script><script src="/js/sidebar.js" defer></script><script src="/js/next-boot.js" defer></script><script src="/js/pjax.js" defer></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js" defer></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">非键轨道</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Electrons Flowing Inside</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-bangumis"><a href="/bangumis/" rel="section"><i class="fa fa-tv fa-fw"></i>二次元</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF%E4%BB%8B%E7%BB%8D"><span class="nav-text">1 背景介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alphafold%E7%AE%80%E4%BB%8B"><span class="nav-text">2 AlphaFold简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#alphafold-%E9%A2%84%E6%B5%8B%E6%B5%81%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="nav-text">2.1 AlphaFold 预测流程简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8E-alphafold-%E7%9A%84%E8%AF%84%E4%BB%B7"><span class="nav-text">2.2 对于 AlphaFold 的评价</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#alphafold2-%E4%B8%8E-rosetta-fold"><span class="nav-text">3 AlphaFold2 与 RoseTTA-fold</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#alphafold2-%E7%9A%84%E7%AA%81%E7%A0%B4%E6%80%A7%E8%BF%9B%E5%B1%95"><span class="nav-text">3.1 AlphaFold2 的突破性进展</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rosetta-fold"><span class="nav-text">3.2 RoseTTA-Fold</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E6%84%8F%E4%B9%89%E4%B8%8E%E5%B1%95%E6%9C%9B"><span class="nav-text">4 工作意义与展望</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%9B%8B%E7%99%BD%E8%B4%A8%E7%BB%93%E6%9E%84%E9%A2%84%E6%B5%8B%E4%B8%8E%E7%94%9F%E7%89%A9%E7%A7%91%E5%AD%A6"><span class="nav-text">4.1 蛋白质结构预测与生物科学</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%9B%8B%E7%99%BD%E8%B4%A8%E6%8A%98%E5%8F%A0%E9%97%AE%E9%A2%98"><span class="nav-text">4.2 “蛋白质折叠问题”</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references"><span class="nav-text">References</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="HC Aya."
+      src="/images/takina.jpeg">
+  <p class="site-author-name" itemprop="name">HC Aya.</p>
+  <div class="site-description" itemprop="description">Electrons Flowing Inside.
+</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/HC-114cs" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;HC-114cs" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:ayana7mi1240@qq.com" title="E-mail → mailto:ayana7mi1240@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.zhihu.com/people/he-xiao-ye-39" title="知乎 → https:&#x2F;&#x2F;www.zhihu.com&#x2F;people&#x2F;he-xiao-ye-39" rel="noopener me" target="_blank"><i class="fab fa-zhihu fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/12378091" title="Bilibili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;12378091" rel="noopener me" target="_blank"><i class="fa-brands fa-bilibili fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://tkhcyalumedance.wordpress.com/" title="https:&#x2F;&#x2F;tkhcyalumedance.wordpress.com&#x2F;" rel="noopener" target="_blank">TkH</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://www.fengyu-poi.cn/" title="https:&#x2F;&#x2F;www.fengyu-poi.cn&#x2F;" rel="noopener" target="_blank">Sdk</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://jfwilliamson.me/" title="https:&#x2F;&#x2F;jfwilliamson.me&#x2F;" rel="noopener" target="_blank">Yui</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://jiahuinie.com/" title="https:&#x2F;&#x2F;jiahuinie.com&#x2F;" rel="noopener" target="_blank">Nie</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://ayahccw.xyz/2022/a9bd3a74.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/takina.jpeg">
+      <meta itemprop="name" content="HC Aya.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="非键轨道">
+      <meta itemprop="description" content="Electrons Flowing Inside.
+">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="人工智能预测蛋白质进展 | 非键轨道">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          人工智能预测蛋白质进展
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-06-22 13:48:14" itemprop="dateCreated datePublished" datetime="2022-06-22T13:48:14+08:00">2022-06-22</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%8A%A5%E5%91%8A/" itemprop="url" rel="index"><span itemprop="name">报告</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/a9bd3a74.html" class="post-meta-item twikoo_visitors" data-flag-title="人工智能预测蛋白质进展" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="twikoo_visitors"></span>
+    </span>
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4.5k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>4 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><blockquote>
+<p>本文是笔者《软物质与硬科学》课程的小报告（2022.6）。</p>
+</blockquote>
+<span id="more"></span>
+<h2 id="背景介绍">1 背景介绍</h2>
+<p>蛋白质是大部分生命过程的核心。由于结构决定功能，对于蛋白质结构的理解几十年来一直是生物学上的重要挑战。虽然实验方法（如冷冻电镜）取得了很多进展，但仍是耗时费力、成本高昂的。而且已知的蛋白质数目以十亿计，是实验方法难以穷尽的。而另一方面，人们又迫切地希望知道氨基酸序列和蛋白质结构的对应关系，以此理解生命过程与疾病、设计小分子药物、设计蛋白质等。因此，数十年来的理论工作一直希望从给定的氨基酸序列通过计算预测出蛋白质的空间结构。</p>
+<p>这一蛋白质结构预测问题具有重大意义。CASP
+是两年一度的蛋白质结构预测比赛，用来衡量这一领域的进展。在其20多年的历程中，蛋白质预测的准确度进展比较缓慢。而在
+2018 年的 CASP13 中，来自 DeepMind 的人工智能 AlphaFold
+取得了突破性的成果，使得这一领域得到了空前的关注。</p>
+<h2 id="alphafold简介">2 AlphaFold简介</h2>
+<p>在 CSAP
+比赛中，需预测的蛋白质按照有无类似序列的已知结构（是否适合基于模板预测）划分为不同类别的区段。AlphaFold
+在 Free Modelling（FM,
+即没有同源结构的情况）区段类别中，得到了远超其他系统的预测准确度——得到
+52.8 的总分，而第二名是
+36.6。在其他类别也有较高的得分。它的准确性主要来自于距离预测的准确性。</p>
+<h3 id="alphafold-预测流程简介">2.1 AlphaFold 预测流程简介</h3>
+<p>近年来，共进化信息的使用（得益于 PDB
+蛋白质数据库的发展），提高了蛋白质结构预测的准确性。这一信息也是
+AlphaFold
+的关键。通过在大型数据集中搜索和目前氨基酸序列相似的序列、并进行对齐，得到MSA（多序列比对）信息。MSA信息可以用来推断残基的接触情况，已有包括神经网络在内的方法应用于这项工作。接触预测加入到之后的结构预测中，引导出有更多满足“预测中的接触”的结构。</p>
+<p>AlphaFold 的核心在于一个卷积神经网络（CNN），在 PDB
+蛋白质结构数据库上训练。对它输入序列信息 <span
+class="math inline">\(S\)</span> 和对应的 MSA 信息 <span
+class="math inline">\(MSA(S)\)</span> ，输出残基对的距离预测，即每个
+<span class="math inline">\(ij\)</span> 配对之间的距离的（离散）概率分布
+<span class="math inline">\(P(d_{ij}|S,MSA(S))\)</span>
+。由此得到一个距离矩阵（或接触矩阵），将原始输入转化为了二维表示。这一结果和实际情况比较接近。</p>
+<p>预测出距离矩阵，跟据空间几何关系也得到了扭转角分布的预测。接下来构建用于结构预测的“势能面”。它包含等权重的三项：距离的概率分布导出的
+<span class="math inline">\(V_\text{distance}\)</span>
+、扭转角的概率分布导出的 <span
+class="math inline">\(V_{\mathrm{torsion}}\)</span> 、和通过 Rosetta
+软件计算的 <span class="math inline">\(V_\text{score2\_smooth}\)</span>
+——包含一个范德华项。蛋白质立体结构是用残基骨架的扭转角<span
+class="math inline">\((\phi,\psi)\)</span>进行参数化的（距离通过一个映射得到），总势能写为
+<span class="math inline">\(V_\text{total}(\phi,\psi)\)</span> 。</p>
+<p>最后，通过梯度下降法找到势能极小点，得到最优的 <span
+class="math inline">\(\phi\)</span> 、<span
+class="math inline">\(\psi\)</span> 取值，以此输出结构预测。</p>
+<h3 id="对于-alphafold-的评价">2.2 对于 AlphaFold 的评价</h3>
+<p>值得注意的是，AlphaFold
+并非首先应用深度学习预测蛋白质结构的。如前所述，在对MSA处理得到接触矩阵的步骤中，深度学习方法已经得到很多应用。而在CASP13中排名靠前的小组基本都用到了神经网络。</p>
+<p>从共进化信息先预测接触矩阵，后间接预测蛋白质结构，这是一种传统方法，因为接触矩阵作为已知的约束使得预测过程相对简化。AlphaFold
+还利用了 Rosseta
+这一成熟的蛋白质建模软件来帮助预测。从这一点考虑，AlphaFold
+没有在方法上做出重大的革新，而在方法的整合与实现上取得了进展。</p>
+<p>但 AlphaFold 的成功是不容小觑的，在两年后的 CASP14
+中，很多小组因为学习了 AlphaFold 而显著提高了准确度，DeepMind
+也推出了更强大的 AlphaFold2。</p>
+<h2 id="alphafold2-与-rosetta-fold">3 AlphaFold2 与 RoseTTA-fold</h2>
+<p>在 2021 年 Science 公布的年度科学突破中，AlphaFold2 与 RoseTTA-fold
+这两种基于人工智能预测蛋白质结构的系统位列榜首。这两个程序都已开源，为科学界提供了有力工具。</p>
+<h3 id="alphafold2-的突破性进展">3.1 AlphaFold2 的突破性进展</h3>
+<p>2020 年的 CASP14 中，DeepMind 的 AlphaFold2 系统得到了接近 90
+的平均得分，接近实验测量的精度（90分）。预测的平均误差约 <span
+class="math inline">\(1 \text{Å}\)</span>
+，即达到了原子精度内。研究团队声称解决了“蛋白质折叠问题”中的结构预测问题。</p>
+<p>研究团队在传统方法的改进中遇到了瓶颈，选择改变策略。AlphaFold2
+不再使用预测接触矩阵的方法，而是改为“端对端”预测——输入氨基酸序列和同源比对序列，输出目标蛋白质的空间结构，是一个更复杂、更强大的系统。它的网络分为两个部分：
+Evoformer 模块和结构模块。</p>
+<p>称为 Evoformer
+的模块的工作原则是将蛋白质结构预测视为三维空间中的图推理问题，其中图的边由相邻残基信息定义。输入为配对特征信息和
+MSA 信息。经过48个模块的更新，输出处理后的配对信息和 MSA
+信息。在其中广泛引入了注意力（Attention）机制，以及建立了“三角乘法更新”机制（受距离的三角不等式的启发）等。</p>
+<p>接下来结构模块利用 MSA
+信息和配对信息预测结构。将蛋白质结构用相对位置表示，记录残基相对于周边环境的欧几里得变换。平移向量和旋转矩阵用于主干的参数化，以更新主干结构；在残基内部，扭转角作为参数，以确定具体的原子坐标。此模块中建立了称为“不变点注意力”（Invariant
+point attention; IPA）的机制。</p>
+<p>Attention 机制是从人类视觉注意力机制中获得的灵感，与 CNN
+相比更善于考虑全局信息。AlphaFold2
+包含了很多方法上的创新，为这个领域带来了突破性进展。在 2021 年 7
+月发布的开源版本中，又将运算速度提高至 16 倍，成为更有力的工具。</p>
+<h3 id="rosetta-fold">3.2 RoseTTA-Fold</h3>
+<p>RoseTTA-Fold 是由华盛顿大学的研究者开发的蛋白质预测系统，同在 2021 年
+7 月开源发布。受到 AlphaFold2
+架构的启发，建立了一个“三轨”网络：同时考虑氨基酸一维序列的模式、氨基酸之间如何相互作用（二维距离图）和蛋白质可能的三维结构，三种水平的信息被连续转换和整合。这个网络的结构预测精度接近
+CASP14 中 AlphaFold2
+的表现，而且可以高效预测蛋白复合物的结构。而且运行快速、对计算资源要求较低，更适合一般研究者使用，“在一台游戏电脑上可以在短短十分钟内计算出一个蛋白质结构”。</p>
+<h2 id="工作意义与展望">4 工作意义与展望</h2>
+<h3 id="蛋白质结构预测与生物科学">4.1 蛋白质结构预测与生物科学</h3>
+<p>2021 年，DeepMind 报道了利用 AlphaFold2
+显著扩大了蛋白质组的结构覆盖范围，其规模几乎涵盖了整个人类蛋白质组（98.5%的人类蛋白质）。这一预测数据集免费提供给社区，研究者预计常规的大规模和高精确度的结构预测将成为一个重要的工具，使新生命的问题能够从结构角度得到解决。</p>
+<p>AlphaFold 预测帮助确定了 Lupas
+的实验室多年来一直试图破解的一种细菌蛋白质的结构，此前所有方法都没能成功。Lupas
+称它在半小时中解决了。2020 年初，DeepMind 发布了对少数 SARS-CoV-2
+蛋白质结构的预测，而这些蛋白质尚未通过实验确定。至今 AlphaFold
+帮助了许多生物科学课题，它可能意味着易于得到的实验数据将足够预测出准确的蛋白质结构。随着大量基因组数据将可靠地转化为结构信息，可预测很多新的领域，如蛋白质进化研究，将蓬勃发展。Lupas
+评价称，这将使新一代的分子生物学家能够提出更高级的问题。它为科学提供了一种工具，使科学家从重复工作中解放。</p>
+<p>站在人工智能的角度，AlphaFold
+的成功也代表着它对于科学能产生的影响。如今更多的公司，包括微软、腾讯的AI部门也参与了
+CASP，人工智能对于科学研究的推动是值得期待的。</p>
+<h3 id="蛋白质折叠问题">4.2 “蛋白质折叠问题”</h3>
+<p>虽然 AlphaFold
+基本解决了“蛋白质折叠问题”中的结构预测部分，但它还有提升准确度、可信度的空间。另外因为蛋白质有柔性，它在溶液环境中构象也会发生改变。这时的构象未必是所预测出的晶体中的结构能完全决定的。</p>
+<p>而“蛋白质折叠”——21
+世纪生物物理的重大课题，还远未解决。氨基酸序列与蛋白质结构的一一对应关系并不包含折叠过程的信息。而这其中的动力学问题，不论是对于生命过程的研究、还是药物开发，往往是很受关注的。也应注意到取得了成就的是基于“信息学”的方法，而非更加“物理”的分子动力学模拟，后者目前即便是处理中等大小的蛋白质都颇有挑战。综上，这不但说明了
+AI
+不能取代研究者（而是成为优秀的工具），也表明了我们对这一生命的基本过程的研究还有很长的录要走。</p>
+<h2 id="references">References</h2>
+<p>Minkyung Baek et al. “Accurate prediction of protein structures and
+interactions using a three-track neural network”. In: <em>SCIENCE</em>
+373.6557 (2021), pp. 871+. DOI: 10.1126/science.abj8754.</p>
+<p>Ewen Callaway. “‘IT WILL CHANGE EVERYTHING’: DEEPMIND’S AI MAKES
+GIGANTIC LEAP IN SOLVING PROTEIN STRUCTURES”. In: <em>NATURE</em>
+588.7837 (2020), pp. 203–204. DOI: 10.1038/d41586-020-03348-4.</p>
+<p>John Jumper et al. “Highly accurate protein structure prediction with
+AlphaFold”. In: <em>NATURE</em> 596.7873 (2021), pp. 583+. DOI:
+10.1038/s41586-021-038192.</p>
+<p>Andrew W. Senior et al. “Improved protein structure prediction using
+potentials from deep learning”. In: <em>NATURE</em> 577.7792 (2020), pp.
+706+. DOI: 10.1038/s41586-019-1923-7.</p>
+<p>H. Holden Thorp. “Proteins, proteins everywhere”. In:
+<em>SCIENCE</em> 374.6574, SI (2021), p. 1415. ISSN: 0036-8075.
+DOI:10.1126/science.abn5795.</p>
+<p>Kathryn Tunyasuvunakool et al. “Highly accurate protein structure
+prediction for the human proteome”. In: <em>NATURE</em> 596.7873 (2021),
+pp. 590+. ISSN: 0028-0836. DOI: 10.1038/s41586-021-03828-1.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>HC Aya.
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://ayahccw.xyz/2022/a9bd3a74.html" title="人工智能预测蛋白质进展">https://ayahccw.xyz/2022/a9bd3a74.html</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh-hans" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97/" rel="tag"># 计算</a>
+              <a href="/tags/%E7%94%9F%E4%BF%A1/" rel="tag"># 生信</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/8e86dee7.html" rel="prev" title="6.1 单纯的记录">
+                  <i class="fa fa-angle-left"></i> 6.1 单纯的记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/25b0f21e.html" rel="next" title="天亮之前应休憩">
+                  天亮之前应休憩 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments"><div id="twikoo-comments"></div></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2021 – 
+    <span itemprop="copyrightYear">2026</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">HC Aya.</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>站点总字数：</span>
+    <span title="站点总字数">81k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>站点阅读时长 &asymp;</span>
+    <span title="站点阅读时长">1:14</span>
+  </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="reading-progress-bar"></div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+<script class="next-config" data-name="twikoo" type="application/json">{"enable":true,"visitor":true,"envId":"https://ayahc-twikoo.hf.space","el":"#twikoo-comments"}</script>
+<script>
+document.addEventListener('page:loaded', () => {
+  NexT.utils.loadComments(CONFIG.twikoo.el)
+    .then(() => NexT.utils.getScript(
+      CONFIG.twikoo.jsUrl || 'https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js',
+      { condition: window.twikoo }
+    ))
+    .then(() => {
+      twikoo.init(CONFIG.twikoo);
+    });
+});
+</script>
+<style>
+.post-block, .comments {
+  overflow: visible;
+}
+.tk-owo-emotion {
+  display: inline-block;
+}
+</style>
+
+</body>
+</html>
